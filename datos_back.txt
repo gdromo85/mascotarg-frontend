@@ -1,0 +1,74 @@
+
+enum Role {
+  OWNER
+  VET
+  ADMIN
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  celular      String?
+  sexo         String?
+  ubicacion    String?
+  role         Role     @default(OWNER)   // 👈 Nuevo campo
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  pets         UserPet[]     // relación a través de la tabla intermedia
+}
+
+model Pet {
+  id              Int      @id @default(autoincrement())
+  name            String
+  peso            Float?
+  especie         String?
+  raza            String?
+  fechaNacimiento DateTime?
+  observaciones   String?
+  
+  userPets        UserPet[]     // relación a través de la tabla intermedia
+  records         MedicalRecord[]
+  clinicalRecords ClinicalRecord[] // 👈 Added back-reference
+
+  qrToken String? @unique
+}
+
+model UserPet {
+  userId Int
+  petId  Int
+  role   String    // Ej: "owner", "family", "vet"
+  addedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pet  Pet  @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  @@id([userId, petId]) // clave compuesta
+}
+
+model MedicalRecord {
+  id          Int      @id @default(autoincrement())
+  petId       Int
+  date        DateTime @default(now())
+  type        String
+  description String
+  vetName     String
+  createdAt   DateTime @default(now())
+  pet         Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)
+}
+
+model ClinicalRecord {
+  id          Int      @id @default(autoincrement())
+  petId       Int
+  pet         Pet      @relation(fields: [petId], references: [id])
+  vetName     String   // nombre del veterinario (si no está registrado en Users)
+  vetEmail    String?  // opcional
+  fecha       DateTime @default(now())
+  diagnostico String
+  tratamiento String?
+  observaciones String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

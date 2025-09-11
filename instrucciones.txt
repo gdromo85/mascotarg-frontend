@@ -1,0 +1,157 @@
+You are an expert React frontend developer.
+You will create the frontend for a web application that manages pet medical history.
+
+The backend is already implemented with Node.js, Express, PostgreSQL, and Prisma. You must consume its REST API endpoints.
+
+Always build with:
+
+React + React Router
+
+Axios (API calls)
+
+Context or Redux (state management for authentication & roles)
+
+Material UI (MUI) for components and styling
+
+Socket.io client for real-time notifications
+
+🔹 API Summary (to consume)
+
+The backend exposes these main resources:
+
+Auth
+
+POST /api/auth/register → register user
+
+POST /api/auth/login → login, receive JWT
+
+Pets
+
+POST /api/pets → create pet
+
+GET /api/pets → list pets of logged user
+
+GET /api/pets/:id → pet details
+
+PUT /api/pets/:id → update pet
+
+DELETE /api/pets/:id → delete pet
+
+Share Pet (Family)
+
+POST /api/user-pet → invite user to a pet
+
+GET /api/user-pet/:petId → list users with access
+
+DELETE /api/user-pet/:petId/:userId → remove access
+
+Veterinarians
+
+POST /api/pet-access/invite → assign vet to pet
+
+GET /api/pet-access/:petId/vets → list vets for a pet
+
+DELETE /api/pet-access/:petId/vets/:vetId → remove vet
+
+QR Access
+
+POST /api/qr/generate/:petId → generate QR token for vet access
+
+POST /api/qr/exchange/:token → vet receives temporary JWT
+
+Clinical Records
+
+GET /api/records/:petId → list records
+
+POST /api/records → create record (only vets/admins)
+
+Notifications
+
+GET /api/notifications → list notifications for current user
+
+Real-time via Socket.io
+
+🔹 User Roles and Permissions
+
+OWNER → full control of their pets (CRUD, invite family, invite vets).
+
+FAMILY → view and update shared pets, view medical records.
+
+VET → only sees pets assigned to them, can create medical records.
+
+VET_TEMP → QR access, temporary (1 hour), can create records.
+
+ADMIN → full access.
+
+🔹 UI Requirements
+Global
+
+Authentication with JWT (store in localStorage).
+
+Role-based navigation (show/hide menus depending on role).
+
+Notifications bell in the header → real-time updates when a vet creates a new clinical record.
+
+Views
+
+Login / Register (Auth)
+
+Dashboard → list of pets for logged-in user
+
+Show pet name, species, weight, age, owner(s)
+
+Actions: edit, delete, share with family, assign vet
+
+Pet Detail → show profile, clinical records, family & vet access
+
+Add/Edit Pet Form
+
+Clinical Records
+
+For vets: add new record (diagnosis, treatment, date)
+
+For owners/family: read-only view
+
+Share Pet (Family)
+
+Invite user by email
+
+List family members with access
+
+Assign Vet
+
+Invite a registered vet by email
+
+List assigned vets
+
+QR Access
+
+Generate QR code for a specific pet
+
+Display QR code (vet scans it to gain temporary access)
+
+Vet Panel
+
+Vets see only their assigned pets
+
+Can add clinical records
+
+🔹 Additional Notes
+
+All pages must check user role before rendering (redirect if unauthorized).
+
+Notifications must update live via socket.io.
+
+Use MUI DataGrid or tables for lists (pets, users, vets, records).
+
+Pet profile should include: name, species, breed, weight, birthdate, notes.
+
+User profile includes: name, email, phone, gender, address.
+
+👉 Your task:
+Build the React frontend following this structure.
+Use clean code, reusable components, and MUI styling.
+Respect role-based access control.
+Make sure all API endpoints are integrated.
+
+## I want it to be done in phases, so first think and plan the phases and then we create phase by phase.
