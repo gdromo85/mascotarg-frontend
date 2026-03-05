@@ -705,26 +705,26 @@ function PetDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header con información de la mascota */}
-        <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-8 text-white relative overflow-hidden mb-8">
+        <div className="bg-gradient-to-r from-emerald-700 to-teal-700 rounded-2xl p-8 text-white relative overflow-hidden mb-8 border border-white/10">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full transform translate-x-8 -translate-y-8"></div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center space-x-6 mb-6 lg:mb-0">
-              <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+              <div className="w-20 h-20 bg-white/15 rounded-2xl flex items-center justify-center ring-1 ring-white/20">
                 <span className="text-4xl">{getSpeciesEmoji(pet.especie)}</span>
               </div>
               <div>
-                <h1 className="text-4xl font-bold font-display mb-2 text-gray-800">
+                <h1 className="text-4xl font-bold font-display mb-2">
                   {pet.name}
                 </h1>
                 <div className="flex items-center space-x-4 text-white/90">
-                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-medium text-gray-600">
+                  <span className="bg-white/15 px-3 py-1 rounded-full text-sm font-medium">
                     {pet.especie || "Sin especie"}
                   </span>
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-white/90">
                     🎂 {calculateAge(pet.fechaNacimiento)}
                   </span>
                 </div>
@@ -734,21 +734,21 @@ function PetDetail() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleEdit}
-                className="bg-white/20 hover:bg-gray-300 backdrop-blur-sm px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2 text-gray-800 border-2 border-gray-400"
+                className="bg-white/15 hover:bg-white/25 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2 text-white border border-white/20"
               >
                 <span>✏️</span>
                 <span>Editar</span>
               </button>
               <button
                 onClick={() => setShowDeleteModal(true)}
-                className="bg-red-500 hover:bg-red-500/30 backdrop-blur-sm px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
               >
                 <span>🗑️</span>
                 <span>Eliminar</span>
               </button>
               <button
                 onClick={handleGenerateGeneralQR}
-                className="bg-purple-500 hover:bg-purple-600 backdrop-blur-sm px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                className="bg-slate-800 hover:bg-slate-900 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
               >
                 <span>📱</span>
                 <span>QR Identificacion</span>
@@ -760,8 +760,8 @@ function PetDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Información detallada */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white rounded-2xl shadow-card p-6">
-              <h2 className="text-2xl font-bold font-display mb-6 flex items-center space-x-2">
+            <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6">
+              <h2 className="text-2xl font-bold font-display mb-6 flex items-center space-x-2 text-slate-900">
                 <span>📋</span>
                 <span>Información Básica</span>
               </h2>
@@ -788,14 +788,14 @@ function PetDetail() {
                   ].map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-center space-x-3 p-3 bg-primary-50 rounded-xl"
+                      className="flex items-center space-x-3 p-3 bg-emerald-50 rounded-xl border border-emerald-100"
                     >
                       <span className="text-2xl">{item.icon}</span>
                       <div>
-                        <p className="text-sm font-medium text-gray-600">
+                        <p className="text-sm font-medium text-slate-600">
                           {item.label}
                         </p>
-                        <p className="text-lg font-semibold text-gray-800">
+                        <p className="text-lg font-semibold text-slate-900">
                           {item.value}
                         </p>
                       </div>
@@ -825,14 +825,14 @@ function PetDetail() {
                   ].map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-center space-x-3 p-3 bg-secondary-50 rounded-xl"
+                      className="flex items-center space-x-3 p-3 bg-amber-50 rounded-xl border border-amber-100"
                     >
                       <span className="text-2xl">{item.icon}</span>
                       <div>
-                        <p className="text-sm font-medium text-gray-600">
+                        <p className="text-sm font-medium text-slate-600">
                           {item.label}
                         </p>
-                        <p className="text-lg font-semibold text-gray-800">
+                        <p className="text-lg font-semibold text-slate-900">
                           {item.value}
                         </p>
                       </div>
@@ -843,13 +843,13 @@ function PetDetail() {
             </div>
 
             {pet.observaciones && (
-              <div className="bg-white rounded-2xl shadow-card p-6">
-                <h3 className="text-xl font-bold mb-4 flex items-center space-x-2">
+              <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6">
+                <h3 className="text-xl font-bold mb-4 flex items-center space-x-2 text-slate-900">
                   <span>📝</span>
                   <span>Observaciones</span>
                 </h3>
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                  <p className="text-slate-700 leading-relaxed">
                     {pet.observaciones}
                   </p>
                 </div>
@@ -859,15 +859,15 @@ function PetDetail() {
 
           {/* Panel lateral */}
           <div className="space-y-6">
-            <div className="bg-white rounded-2xl shadow-card p-6">
-              <h3 className="text-xl font-bold mb-4 flex items-center space-x-2">
+            <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6">
+              <h3 className="text-xl font-bold mb-4 flex items-center space-x-2 text-slate-900">
                 <span>⚡</span>
                 <span>Acciones</span>
               </h3>
               <div className="space-y-3">
                 <button
                   onClick={handleOpenShareModal}
-                  className="w-full btn-success text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
                 >
                   <span>👨‍👩‍👧‍👦</span>
                   <span>Compartir con familia</span>
@@ -875,7 +875,7 @@ function PetDetail() {
 
                 <button
                   onClick={handleOpenVetModal}
-                  className="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-teal-700 hover:bg-teal-800 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
                 >
                   <span>👨‍⚕️</span>
                   <span>Asignar veterinario</span>
@@ -883,7 +883,7 @@ function PetDetail() {
 
                 <button
                   onClick={handleOpenAssignedUsersModal}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
                 >
                   <span>👥</span>
                   <span>Usuarios asignados</span>
@@ -891,7 +891,7 @@ function PetDetail() {
 
                 <button
                   onClick={handleGenerateQR}
-                  className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
                 >
                   <span>📱</span>
                   <span>Generar QR veterinario</span>
@@ -899,7 +899,7 @@ function PetDetail() {
 
                 <button
                   onClick={() => handleOpenNotesModal()}
-                  className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
                 >
                   <span>📝</span>
                   <span>Agregar nota</span>
@@ -910,16 +910,16 @@ function PetDetail() {
         </div>
 
         {/* Historial clínico */}
-        <div className="mt-8 bg-white rounded-2xl shadow-card overflow-hidden">
-          <div className="p-6 border-b border-gray-200">
+        <div className="mt-8 bg-white/90 rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="p-6 border-b border-slate-200">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <h2 className="text-2xl font-bold font-display flex items-center space-x-2">
+              <h2 className="text-2xl font-bold font-display flex items-center space-x-2 text-slate-900">
                 <span>🏥</span>
                 <span>Historial Médico</span>
               </h2>
               <button
                 onClick={() => navigate(`/pets/${id}/medical-records/new`)}
-                className="btn-primary text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-md transition-all duration-300 flex items-center space-x-2"
               >
                 <span>➕</span>
                 <span>Agregar registro</span>
@@ -930,18 +930,18 @@ function PetDetail() {
           <div className="p-6">
             {records.length === 0 ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">🏥</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">
                   Sin registros médicos
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 mb-6">
                   Esta mascota aún no tiene registros médicos
                 </p>
                 <button
                   onClick={() => navigate(`/pets/${id}/medical-records/new`)}
-                  className="btn-primary text-white px-6 py-3 rounded-xl font-semibold"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold"
                 >
                   Agregar primer registro
                 </button>
@@ -950,44 +950,44 @@ function PetDetail() {
               <div className="overflow-x-auto">
                 <table className="min-w-full">
                   <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                    <tr className="border-b border-slate-200">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         📅 Fecha
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         🩺 Tipo
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         👨‍⚕️ Veterinario
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         📝 Descripción
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         ⚡ Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-200">
                     {records.map((record) => (
                       <tr
                         key={record.id}
-                        className="hover:bg-gray-50 transition-colors duration-200"
+                        className="hover:bg-slate-50 transition-colors duration-200"
                       >
-                        <td className="px-6 py-4 text-sm text-gray-600">
+                        <td className="px-6 py-4 text-sm text-slate-600">
                           {formatDateForDisplay(record.date || record.fecha)}
                         </td>
                         <td className="px-6 py-4">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                             {record.type || record.tipo || "Consulta"}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 text-sm font-medium text-slate-900">
                           {record.vetName ||
                             record.veterinario ||
                             "No especificado"}
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
+                        <td className="px-6 py-4 text-sm text-slate-600 max-w-xs">
                           <div
                             className="truncate"
                             title={
@@ -1013,7 +1013,7 @@ function PetDetail() {
                                   `/pets/${id}/medical-records/${record.id}/edit`
                                 )
                               }
-                              className="text-blue-600 hover:text-blue-800 transition-colors duration-200 p-2 hover:bg-blue-50 rounded-lg"
+                              className="text-emerald-700 hover:text-emerald-900 transition-colors duration-200 p-2 hover:bg-emerald-50 rounded-lg"
                               title="Editar registro"
                             >
                               ✏️
@@ -1044,9 +1044,9 @@ function PetDetail() {
         </div>
 
         {/* Registros Clínicos */}
-        <div className="mt-8 bg-white rounded-2xl shadow-card overflow-hidden">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-2xl font-bold font-display flex items-center space-x-2">
+        <div className="mt-8 bg-white/90 rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="p-6 border-b border-slate-200">
+            <h2 className="text-2xl font-bold font-display flex items-center space-x-2 text-slate-900">
               <span>👩‍⚕️</span>
               <span>Registros Clínicos</span>
             </h2>
@@ -1055,13 +1055,13 @@ function PetDetail() {
           <div className="p-6">
             {clinicalRecords.length === 0 ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">👩‍⚕️</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">
                   Sin registros clínicos
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-slate-600">
                   Esta mascota aún no tiene registros clínicos realizados por veterinarios
                 </p>
               </div>
@@ -1069,47 +1069,47 @@ function PetDetail() {
               <div className="overflow-x-auto">
                 <table className="min-w-full">
                   <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                    <tr className="border-b border-slate-200">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         📅 Fecha
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         🩺 Tipo
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         👩‍⚕️ Veterinario
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         📝 Descripción
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">
                         ⚡ Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-200">
                     {clinicalRecords.map((record) => (
                       <tr
                         key={record.id}
-                        className="hover:bg-gray-50 transition-colors duration-200"
+                        className="hover:bg-slate-50 transition-colors duration-200"
                       >
-                        <td className="px-6 py-4 text-sm text-gray-600">
+                        <td className="px-6 py-4 text-sm text-slate-600">
                           {formatDateForDisplay(record.fecha)}
                         </td>
                         <td className="px-6 py-4">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                             {record.type}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 text-sm font-medium text-slate-900">
                           <div>
                             <p>{record.vetName}</p>
                             {record.vetEmail && (
-                              <p className="text-xs text-gray-500">{record.vetEmail}</p>
+                              <p className="text-xs text-slate-500">{record.vetEmail}</p>
                             )}
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
+                        <td className="px-6 py-4 text-sm text-slate-600 max-w-xs">
                           <div
                             className="truncate"
                             title={record.description || "Sin descripción"}
@@ -1121,7 +1121,7 @@ function PetDetail() {
                         <td className="px-6 py-4 text-sm font-medium">
                           <button
                             onClick={() => handleViewClinicalRecord(record)}
-                            className="text-blue-600 hover:text-blue-800 transition-colors duration-200 p-2 hover:bg-blue-50 rounded-lg"
+                            className="text-emerald-700 hover:text-emerald-900 transition-colors duration-200 p-2 hover:bg-emerald-50 rounded-lg"
                             title="Ver registro completo"
                           >
                             👁️
@@ -1137,16 +1137,16 @@ function PetDetail() {
         </div>
 
         {/* Sección de Notas */}
-        <div className="mt-8 bg-white rounded-2xl shadow-card overflow-hidden">
-          <div className="p-6 border-b border-gray-200">
+        <div className="mt-8 bg-white/90 rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="p-6 border-b border-slate-200">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <h2 className="text-2xl font-bold font-display flex items-center space-x-2">
+              <h2 className="text-2xl font-bold font-display flex items-center space-x-2 text-slate-900">
                 <span>📝</span>
                 <span>Notas de {pet.name}</span>
               </h2>
               <button
                 onClick={() => handleOpenNotesModal()}
-                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-md transition-all duration-300 flex items-center space-x-2"
               >
                 <span>➕</span>
                 <span>Agregar nota</span>
@@ -1157,18 +1157,18 @@ function PetDetail() {
           <div className="p-6">
             {notes.length === 0 ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">📝</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">
                   Sin notas registradas
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 mb-6">
                   Aún no hay notas para {pet.name}
                 </p>
                 <button
                   onClick={() => handleOpenNotesModal()}
-                  className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-xl font-semibold"
+                  className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-xl font-semibold"
                 >
                   Agregar primera nota
                 </button>
@@ -1183,14 +1183,14 @@ function PetDetail() {
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex items-center space-x-2">
                         <span className="text-amber-600">📅</span>
-                        <span className="text-sm font-medium text-gray-600">
+                        <span className="text-sm font-medium text-slate-600">
                           {formatDateForDisplay(note.dateTime)}
                         </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <button
                           onClick={() => handleOpenNotesModal(note)}
-                          className="text-blue-600 hover:text-blue-800 transition-colors duration-200 p-1 hover:bg-blue-50 rounded"
+                          className="text-emerald-700 hover:text-emerald-900 transition-colors duration-200 p-1 hover:bg-emerald-50 rounded"
                           title="Editar nota"
                         >
                           ✏️
@@ -1204,7 +1204,7 @@ function PetDetail() {
                         </button>
                       </div>
                     </div>
-                    <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                    <p className="text-slate-700 leading-relaxed whitespace-pre-line">
                       {note.description}
                     </p>
                   </div>
@@ -1217,23 +1217,23 @@ function PetDetail() {
 
       {/* Modal de confirmación */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full border border-slate-200">
             <div className="text-center">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">⚠️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">
                 ¿Eliminar mascota?
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-slate-600 mb-6">
                 ¿Estás seguro de que quieres eliminar a{" "}
                 <strong>{pet.name}</strong>? Esta acción no se puede deshacer.
               </p>
               <div className="flex space-x-3">
                 <button
                   onClick={() => setShowDeleteModal(false)}
-                  className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                  className="flex-1 py-3 px-4 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                 >
                   Cancelar
                 </button>
@@ -1255,16 +1255,16 @@ function PetDetail() {
 
       {/* Modal para agregar/editar notas */}
       {showNotesModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto border border-slate-200">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
                 <span>📝</span>
                 <span>{editingNote ? 'Editar Nota' : 'Nueva Nota'}</span>
               </h3>
               <button
                 onClick={handleCloseNotesModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <span className="text-2xl">✕</span>
               </button>
@@ -1272,7 +1272,7 @@ function PetDetail() {
             
             <form onSubmit={handleSaveNote} className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-700 mb-2">
                   📅 Fecha y Hora
                 </label>
                 <input
@@ -1280,20 +1280,20 @@ function PetDetail() {
                   name="dateTime"
                   value={noteForm.dateTime}
                   onChange={handleNoteFormChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-amber-500 focus:outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 border border-slate-200 rounded-xl bg-slate-50 focus:border-amber-500 focus:bg-white focus:outline-none transition-all duration-300"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-700 mb-2">
                   📝 Descripción *
                 </label>
                 <textarea
                   name="description"
                   value={noteForm.description}
                   onChange={handleNoteFormChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-amber-500 focus:outline-none transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 border border-slate-200 rounded-xl bg-slate-50 focus:border-amber-500 focus:bg-white focus:outline-none transition-all duration-300 resize-none"
                   rows="4"
                   placeholder="Escribe tu nota aquí..."
                   required
@@ -1304,13 +1304,13 @@ function PetDetail() {
                 <button
                   type="button"
                   onClick={handleCloseNotesModal}
-                  className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                  className="flex-1 py-3 px-4 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-semibold transition-all duration-300"
+                  className="flex-1 py-3 px-4 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-semibold transition-all duration-300"
                 >
                   {editingNote ? 'Actualizar' : 'Guardar'}
                 </button>
@@ -1322,16 +1322,16 @@ function PetDetail() {
 
       {/* Modal para compartir con familia */}
       {showShareModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto border border-slate-200">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
                 <span>👨‍👩‍👧‍👦</span>
                 <span>Compartir {pet.name}</span>
               </h3>
               <button
                 onClick={handleCloseShareModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <span className="text-2xl">✕</span>
               </button>
@@ -1348,7 +1348,7 @@ function PetDetail() {
                     name="email"
                     value={shareForm.email}
                     onChange={handleShareFormChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 border border-slate-200 rounded-xl bg-slate-50 focus:border-emerald-500 focus:bg-white focus:outline-none transition-all duration-300"
                     placeholder="usuario@ejemplo.com"
                     required
                     disabled={loadingUser}
@@ -1359,14 +1359,14 @@ function PetDetail() {
                   <button
                     type="button"
                     onClick={handleCloseShareModal}
-                    className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                    className="flex-1 py-3 px-4 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                     disabled={loadingUser}
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={loadingUser}
                   >
                     {loadingUser ? 'Buscando...' : 'Buscar usuario'}
@@ -1378,12 +1378,12 @@ function PetDetail() {
             {shareStep === 2 && foundUser && (
               <form onSubmit={handleSharePet} className="space-y-4">
                 {/* Información del usuario encontrado */}
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                  <h4 className="font-semibold text-green-800 mb-2 flex items-center space-x-2">
+                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                  <h4 className="font-semibold text-emerald-900 mb-2 flex items-center space-x-2">
                     <span>✅</span>
                     <span>Usuario encontrado</span>
                   </h4>
-                  <div className="text-sm text-green-700">
+                  <div className="text-sm text-emerald-800">
                     <p><strong>Nombre:</strong> {foundUser.name}</p>
                     <p><strong>Email:</strong> {foundUser.email}</p>
                   </div>
@@ -1391,14 +1391,14 @@ function PetDetail() {
 
                 {/* Selector de rol */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
                     👥 Rol en la familia
                   </label>
                   <select
                     name="role"
                     value={shareForm.role}
                     onChange={handleShareFormChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 border border-slate-200 rounded-xl bg-slate-50 focus:border-emerald-500 focus:bg-white focus:outline-none transition-all duration-300"
                     required
                   >
                     <option value="Familiar">Familiar</option>
@@ -1410,13 +1410,13 @@ function PetDetail() {
                   <button
                     type="button"
                     onClick={() => setShareStep(1)}
-                    className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                    className="flex-1 py-3 px-4 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                   >
                     Atrás
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold transition-all duration-300"
+                    className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold transition-all duration-300"
                   >
                     Compartir mascota
                   </button>
@@ -1429,16 +1429,16 @@ function PetDetail() {
 
       {/* Modal para asignar veterinario */}
       {showVetModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto border border-slate-200">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
                 <span>👨‍⚕️</span>
                 <span>Asignar Veterinario a {pet.name}</span>
               </h3>
               <button
                 onClick={handleCloseVetModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <span className="text-2xl">✕</span>
               </button>
@@ -1447,7 +1447,7 @@ function PetDetail() {
             {vetStep === 1 && (
               <form onSubmit={handleSearchVet} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
                     📧 Email del veterinario
                   </label>
                   <input
@@ -1455,15 +1455,15 @@ function PetDetail() {
                     name="email"
                     value={vetForm.email}
                     onChange={handleVetFormChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 border border-slate-200 rounded-xl bg-slate-50 focus:border-teal-600 focus:bg-white focus:outline-none transition-all duration-300"
                     placeholder="veterinario@clinica.com"
                     required
                     disabled={loadingVet}
                   />
                 </div>
                 
-                <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
-                  <p className="text-sm text-purple-700">
+                <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
+                  <p className="text-sm text-teal-700">
                     <strong>ℹ️ Nota:</strong> Solo usuarios con rol de veterinario pueden ser asignados a mascotas.
                   </p>
                 </div>
@@ -1472,14 +1472,14 @@ function PetDetail() {
                   <button
                     type="button"
                     onClick={handleCloseVetModal}
-                    className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                    className="flex-1 py-3 px-4 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                     disabled={loadingVet}
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-3 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 py-3 px-4 bg-teal-700 hover:bg-teal-800 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={loadingVet}
                   >
                     {loadingVet ? 'Buscando...' : 'Buscar veterinario'}
@@ -1491,20 +1491,20 @@ function PetDetail() {
             {vetStep === 2 && foundVet && (
               <form onSubmit={handleAssignVet} className="space-y-4">
                 {/* Información del veterinario encontrado */}
-                <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
-                  <h4 className="font-semibold text-purple-800 mb-2 flex items-center space-x-2">
+                <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
+                  <h4 className="font-semibold text-teal-900 mb-2 flex items-center space-x-2">
                     <span>✅</span>
                     <span>Veterinario encontrado</span>
                   </h4>
-                  <div className="text-sm text-purple-700">
+                  <div className="text-sm text-teal-800">
                     <p><strong>Nombre:</strong> Dr. {foundVet.name}</p>
                     <p><strong>Email:</strong> {foundVet.email}</p>
                     <p><strong>Rol:</strong> {foundVet.role}</p>
                   </div>
                 </div>
 
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                  <p className="text-sm text-green-700">
+                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                  <p className="text-sm text-emerald-800">
                     <strong>🩺 Confirmación:</strong> Dr. {foundVet.name} será asignado como veterinario responsable de {pet.name}.
                   </p>
                 </div>
@@ -1513,13 +1513,13 @@ function PetDetail() {
                   <button
                     type="button"
                     onClick={() => setVetStep(1)}
-                    className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                    className="flex-1 py-3 px-4 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                   >
                     Atrás
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-3 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-xl font-semibold transition-all duration-300"
+                    className="flex-1 py-3 px-4 bg-teal-700 hover:bg-teal-800 text-white rounded-xl font-semibold transition-all duration-300"
                   >
                     Asignar veterinario
                   </button>
@@ -1532,16 +1532,16 @@ function PetDetail() {
 
       {/* Modal para usuarios asignados */}
       {showAssignedUsersModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-200">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
                 <span>👥</span>
                 <span>Usuarios asignados a {pet.name}</span>
               </h3>
               <button
                 onClick={handleCloseAssignedUsersModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <span className="text-2xl">✕</span>
               </button>
@@ -1549,23 +1549,23 @@ function PetDetail() {
             
             {loadingAssignedUsers ? (
               <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                <p className="text-gray-600">Cargando usuarios...</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+                <p className="text-slate-600">Cargando usuarios...</p>
               </div>
             ) : assignedUsers.length === 0 ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">👥</span>
                 </div>
-                <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                <h4 className="text-xl font-semibold text-slate-900 mb-2">
                   Sin usuarios asignados
                 </h4>
-                <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 mb-6">
                   No hay otros usuarios asignados a {pet.name}
                 </p>
                 <button
                   onClick={handleCloseAssignedUsersModal}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold"
                 >
                   Cerrar
                 </button>
@@ -1575,23 +1575,23 @@ function PetDetail() {
                 {assignedUsers.map((userPet) => (
                   <div
                     key={`${userPet.userId}-${userPet.role}`}
-                    className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200"
+                    className="bg-slate-50 border border-slate-200 rounded-xl p-4 hover:bg-slate-100 transition-colors duration-200"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
                           <span className="text-2xl">{getRoleEmoji(userPet.role)}</span>
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-gray-800 flex items-center space-x-2">
+                          <h4 className="font-semibold text-slate-900 flex items-center space-x-2">
                             <span>{userPet.user.name}</span>
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                               {getRoleLabel(userPet.role)}
                             </span>
                           </h4>
-                          <p className="text-sm text-gray-600">{userPet.user.email}</p>
+                          <p className="text-sm text-slate-600">{userPet.user.email}</p>
                           {userPet.addedAt && (
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-slate-500 mt-1">
                               Asignado el {formatDateForDisplay(userPet.addedAt)}
                             </p>
                           )}
@@ -1611,7 +1611,7 @@ function PetDetail() {
                 <div className="flex justify-end pt-4 border-t border-gray-200">
                   <button
                     onClick={handleCloseAssignedUsersModal}
-                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                    className="px-6 py-3 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                   >
                     Cerrar
                   </button>
@@ -1624,16 +1624,16 @@ function PetDetail() {
 
       {/* Modal para usuarios asignados */}
       {showAssignedUsersModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-200">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
                 <span>👥</span>
                 <span>Usuarios asignados a {pet.name}</span>
               </h3>
               <button
                 onClick={handleCloseAssignedUsersModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <span className="text-2xl">✕</span>
               </button>
@@ -1641,23 +1641,23 @@ function PetDetail() {
             
             {loadingAssignedUsers ? (
               <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                <p className="text-gray-600">Cargando usuarios...</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+                <p className="text-slate-600">Cargando usuarios...</p>
               </div>
             ) : assignedUsers.length === 0 ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">👥</span>
                 </div>
-                <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                <h4 className="text-xl font-semibold text-slate-900 mb-2">
                   Sin usuarios asignados
                 </h4>
-                <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 mb-6">
                   No hay otros usuarios asignados a {pet.name}
                 </p>
                 <button
                   onClick={handleCloseAssignedUsersModal}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold"
                 >
                   Cerrar
                 </button>
@@ -1667,23 +1667,23 @@ function PetDetail() {
                 {assignedUsers.map((userPet) => (
                   <div
                     key={`${userPet.userId}-${userPet.role}`}
-                    className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200"
+                    className="bg-slate-50 border border-slate-200 rounded-xl p-4 hover:bg-slate-100 transition-colors duration-200"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
                           <span className="text-2xl">{getRoleEmoji(userPet.role)}</span>
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-gray-800 flex items-center space-x-2">
+                          <h4 className="font-semibold text-slate-900 flex items-center space-x-2">
                             <span>{userPet.user.name}</span>
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                               {getRoleLabel(userPet.role)}
                             </span>
                           </h4>
-                          <p className="text-sm text-gray-600">{userPet.user.email}</p>
+                          <p className="text-sm text-slate-600">{userPet.user.email}</p>
                           {userPet.addedAt && (
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-slate-500 mt-1">
                               Asignado el {formatDateForDisplay(userPet.addedAt)}
                             </p>
                           )}
@@ -1700,10 +1700,10 @@ function PetDetail() {
                   </div>
                 ))}
                 
-                <div className="flex justify-end pt-4 border-t border-gray-200">
+                <div className="flex justify-end pt-4 border-t border-slate-200">
                   <button
                     onClick={handleCloseAssignedUsersModal}
-                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                    className="px-6 py-3 border border-slate-300 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all duration-300"
                   >
                     Cerrar
                   </button>

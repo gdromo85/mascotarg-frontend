@@ -111,12 +111,12 @@ function QRGeneralAccess() {
 
   if (error || !pet) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-red-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50 flex items-center justify-center px-4">
         <div className="text-center max-w-md">
           <div className="w-20 h-20 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <span className="text-3xl text-white">⚠️</span>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">
             Error de acceso
           </h2>
           <p className="text-red-600 mb-4">
@@ -134,32 +134,32 @@ function QRGeneralAccess() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <div className="w-20 h-20 bg-gradient-to-r from-emerald-700 to-teal-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm ring-1 ring-emerald-800/20">
             <span className="text-3xl text-white">{getSpeciesEmoji(pet.especie)}</span>
           </div>
-          <h1 className="text-4xl font-bold font-display text-gray-800 mb-2">
+          <h1 className="text-4xl font-bold font-display text-slate-900 mb-2">
             📱 Acceso QR General
           </h1>
-          <p className="text-gray-600 text-lg">
+          <p className="text-slate-600 text-lg">
             Información de la mascota
           </p>
         </div>
 
         {/* Información de la mascota */}
-        <div className="bg-white rounded-2xl shadow-card p-8 mb-8">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-8 mb-8">
           <div className="text-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-r from-accent-500 to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <span className="text-3xl text-white">{getSpeciesEmoji(pet.especie)}</span>
             </div>
-            <h2 className="text-3xl font-bold font-display text-gray-800 mb-2">
+            <h2 className="text-3xl font-bold font-display text-slate-900 mb-2">
               {pet.name}
             </h2>
-            <div className="flex justify-center items-center space-x-4 text-gray-600">
-              <span className="bg-primary-100 px-3 py-1 rounded-full text-sm font-medium">
+            <div className="flex justify-center items-center space-x-4 text-slate-600">
+              <span className="bg-emerald-100 px-3 py-1 rounded-full text-sm font-medium text-emerald-800">
                 {pet.especie || "Sin especie"}
               </span>
               <span className="text-sm">
@@ -171,34 +171,34 @@ function QRGeneralAccess() {
           {/* Grid de información */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              {[
-                { icon: "🏷️", label: "Nombre", value: pet.name },
-                {
-                  icon: "🌿",
-                  label: "Especie",
-                  value: pet.especie || "No especificada",
-                },
-                {
-                  icon: "🐕",
-                  label: "Raza",
-                  value: pet.raza || "No especificada",
-                },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-3 p-3 bg-primary-50 rounded-xl"
-                >
-                  <span className="text-2xl">{item.icon}</span>
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">
-                      {item.label}
-                    </p>
-                    <p className="text-lg font-semibold text-gray-800">
-                      {item.value}
-                    </p>
+                {[
+                  { icon: "🏷️", label: "Nombre", value: pet.name },
+                  {
+                    icon: "🌿",
+                    label: "Especie",
+                    value: pet.especie || "No especificada",
+                  },
+                  {
+                    icon: "🐕",
+                    label: "Raza",
+                    value: pet.raza || "No especificada",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-3 p-3 bg-emerald-50 rounded-xl border border-emerald-100"
+                  >
+                    <span className="text-2xl">{item.icon}</span>
+                    <div>
+                      <p className="text-sm font-medium text-slate-600">
+                        {item.label}
+                      </p>
+                      <p className="text-lg font-semibold text-slate-900">
+                        {item.value}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
 
             <div className="space-y-4">
@@ -223,14 +223,14 @@ function QRGeneralAccess() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-3 p-3 bg-secondary-50 rounded-xl"
+                  className="flex items-center space-x-3 p-3 bg-amber-50 rounded-xl border border-amber-100"
                 >
                   <span className="text-2xl">{item.icon}</span>
                   <div>
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-slate-600">
                       {item.label}
                     </p>
-                    <p className="text-lg font-semibold text-gray-800">
+                    <p className="text-lg font-semibold text-slate-900">
                       {item.value}
                     </p>
                   </div>
@@ -241,13 +241,13 @@ function QRGeneralAccess() {
 
           {/* Observaciones */}
           {pet.observaciones && (
-            <div className="mt-6 pt-6 border-t border-gray-200">
+            <div className="mt-6 pt-6 border-t border-slate-200">
               <h3 className="text-xl font-bold mb-4 flex items-center space-x-2">
                 <span>📝</span>
                 <span>Observaciones</span>
               </h3>
-              <div className="bg-gray-50 rounded-xl p-4">
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                <p className="text-slate-700 leading-relaxed whitespace-pre-line">
                   {pet.observaciones}
                 </p>
               </div>
@@ -256,8 +256,8 @@ function QRGeneralAccess() {
         </div>
 
         {/* Botones de acción */}
-        <div className="bg-white rounded-2xl shadow-card p-8">
-          <h3 className="text-xl font-bold mb-6 text-center flex items-center justify-center space-x-2">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-8">
+          <h3 className="text-xl font-bold mb-6 text-center flex items-center justify-center space-x-2 text-slate-900">
             <span>⚡</span>
             <span>¿Qué quieres hacer?</span>
           </h3>
@@ -265,7 +265,7 @@ function QRGeneralAccess() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button
               onClick={handleFoundPet}
-              className="w-full bg-green-500 hover:bg-green-600 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-3 transform hover:-translate-y-1"
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-3 transform hover:-translate-y-1"
             >
               <span className="text-2xl">🔍</span>
               <span>Encontré esta mascota</span>
@@ -273,7 +273,7 @@ function QRGeneralAccess() {
             
             <button
               onClick={handleTakePhoto}
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-3 transform hover:-translate-y-1"
+              className="w-full bg-teal-700 hover:bg-teal-800 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-3 transform hover:-translate-y-1"
             >
               <span className="text-2xl">📸</span>
               <span>Tomar foto</span>
@@ -283,8 +283,8 @@ function QRGeneralAccess() {
 
         {/* Footer informativo */}
         <div className="mt-8 text-center">
-          <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-6">
-            <p className="text-gray-600 text-sm">
+          <div className="bg-gradient-to-r from-emerald-50 to-slate-50 rounded-xl p-6 border border-slate-200">
+            <p className="text-slate-600 text-sm">
               💡 Esta página te permite ver la información de una mascota mediante código QR
             </p>
           </div>

@@ -15,6 +15,7 @@ import AdminDashboard from "../pages/AdminDashboard";
 import VetAccess from "../pages/VetAccess";
 import QRGeneralAccess from "../pages/QRGeneralAccess";
 import ClinicalRecordDetail from "../pages/ClinicalRecordDetail";
+import AddVetConsultation from "../pages/AddVetConsultation";
 import NotFound from "../pages/NotFound";
 import ProtectedRoute from "../components/ProtectedRoute";
 
@@ -39,14 +40,22 @@ function AppRouter() {
             </ProtectedRoute>
           } 
         />
-        <Route 
-          path="/pets/new" 
-          element={
-            <ProtectedRoute allowedRoles={["CUIDADOR", "ADMIN"]}>
-              <AddPet />
-            </ProtectedRoute>
-          } 
-        />
+<Route
+  path="/pets/new"
+  element={
+    <ProtectedRoute allowedRoles={["CUIDADOR", "ADMIN"]}>
+      <AddPet />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/add-pet"
+  element={
+    <ProtectedRoute allowedRoles={["CUIDADOR", "VET", "ADMIN"]}>
+      <AddPet />
+    </ProtectedRoute>
+  }
+/>
         <Route 
           path="/pets/:id" 
           element={
@@ -71,21 +80,29 @@ function AppRouter() {
             </ProtectedRoute>
           } 
         />
-        <Route 
-          path="/pets/:petId/clinical-records/:recordId" 
+        <Route
+          path="/pets/:petId/clinical-records/:recordId"
           element={
             <ProtectedRoute allowedRoles={["CUIDADOR", "VET", "ADMIN"]}>
               <ClinicalRecordDetail />
             </ProtectedRoute>
-          } 
+          }
         />
-        <Route 
-          path="/vet-dashboard" 
+        <Route
+          path="/add-consultation/:petId?"
+          element={
+            <ProtectedRoute allowedRoles={["VET", "ADMIN"]}>
+              <AddVetConsultation />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/vet-dashboard"
           element={
             <ProtectedRoute allowedRoles={["VET", "ADMIN"]}>
               <VetDashboard />
             </ProtectedRoute>
-          } 
+          }
         />
         <Route 
           path="/admin-dashboard" 

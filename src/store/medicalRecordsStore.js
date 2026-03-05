@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 export const useMedicalRecordsStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       records: {},
       loading: false,
       error: null,

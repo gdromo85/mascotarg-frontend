@@ -87,28 +87,28 @@ function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-160px)] flex items-center justify-center px-4 py-8">
+    <div className="min-h-[calc(100vh-160px)] bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50 flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <div className="w-20 h-20 bg-gradient-to-r from-emerald-700 to-teal-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm ring-1 ring-emerald-800/20">
             <span className="text-3xl text-white">🔐</span>
           </div>
-          <h1 className="text-3xl font-bold font-display text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold font-display text-slate-900 mb-2">
             ¡Bienvenido de nuevo!
           </h1>
-          <p className="text-gray-600">
+          <p className="text-slate-600">
             Inicia sesión para acceder a tu cuenta
           </p>
         </div>
         
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-2xl shadow-card p-8 space-y-6">
+          <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-8 space-y-6">
             {/* Email Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="email"
               >
                 📧 Correo Electrónico
@@ -121,10 +121,10 @@ function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={() => setFocusedField('email')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'email' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${email && !isValidEmail(email) ? 'border-red-300' : ''}`}
                   placeholder="tu@email.com"
                   required
@@ -147,7 +147,7 @@ function Login() {
             {/* Password Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="password"
               >
                 🔒 Contraseña
@@ -160,10 +160,10 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   onFocus={() => setFocusedField('password')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'password' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   }`}
                   placeholder="Tu contraseña"
                   required
@@ -171,7 +171,7 @@ function Login() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700 transition-colors duration-200"
                 >
                   {showPassword ? '🙈' : '👁️'}
                 </button>
@@ -184,8 +184,8 @@ function Login() {
               disabled={loading || !email || !password || !isValidEmail(email)}
               className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform ${
                 loading || !email || !password || !isValidEmail(email)
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'btn-primary text-white hover:-translate-y-1 hover:shadow-xl'
+                  ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
+                  : 'bg-emerald-600 hover:bg-emerald-700 text-white hover:-translate-y-1 hover:shadow-md'
               }`}
             >
               {loading ? (
@@ -208,17 +208,17 @@ function Login() {
           <div className="flex items-center justify-center space-x-4 text-sm">
             <Link 
               to="/forgot-password" 
-              className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
+              className="text-emerald-700 hover:text-emerald-800 font-medium transition-colors duration-200"
             >
               🤔 ¿Olvidaste tu contraseña?
             </Link>
           </div>
           
-          <div className="border-t border-gray-200 pt-6">
-            <p className="text-gray-600 mb-4">¿No tienes cuenta aún?</p>
+          <div className="border-t border-slate-200 pt-6">
+            <p className="text-slate-600 mb-4">¿No tienes cuenta aún?</p>
             <Link 
               to="/register" 
-              className="inline-flex items-center justify-center space-x-2 w-full py-3 px-6 border-2 border-primary-500 text-primary-600 hover:bg-primary-50 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
+              className="inline-flex items-center justify-center space-x-2 w-full py-3 px-6 border border-emerald-300 text-emerald-700 hover:bg-emerald-50 rounded-xl font-semibold transition-all duration-300 hover:shadow-md"
             >
               <span>📝</span>
               <span>Crear cuenta nueva</span>
@@ -227,9 +227,9 @@ function Login() {
         </div>
         
         {/* Demo Credentials */}
-        <div className="mt-8 p-4 bg-blue-50 rounded-xl border border-blue-200">
-          <h3 className="text-sm font-semibold text-blue-800 mb-2">🧪 Credenciales de prueba:</h3>
-          <div className="text-xs text-blue-700 space-y-1">
+        <div className="mt-8 p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+          <h3 className="text-sm font-semibold text-emerald-900 mb-2">🧪 Credenciales de prueba:</h3>
+          <div className="text-xs text-emerald-800 space-y-1">
             <p><strong>Usuario:</strong> user@test.com / password123</p>
             <p><strong>Veterinario:</strong> vet@test.com / password123</p>
             <p><strong>Admin:</strong> admin@test.com / password123</p>

@@ -156,40 +156,40 @@ function EditPet() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-r from-accent-500 to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <div className="w-20 h-20 bg-gradient-to-r from-emerald-700 to-teal-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm ring-1 ring-emerald-800/20">
             <span className="text-3xl text-white">{getSpeciesEmoji(formData.especie)}</span>
           </div>
-          <h1 className="text-4xl font-bold font-display text-gray-800 mb-2">
+          <h1 className="text-4xl font-bold font-display text-slate-900 mb-2">
             ✏️ Editar Perfil
           </h1>
-          <p className="text-gray-600 text-lg">
-            Actualiza la información de <span className="font-semibold text-primary-600">{petName}</span>
+          <p className="text-slate-600 text-lg">
+            Actualiza la información de <span className="font-semibold text-emerald-700">{petName}</span>
           </p>
         </div>
         
         {/* Breadcrumb */}
-        <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6 max-w-2xl mx-auto">
-          <button onClick={() => navigate('/dashboard')} className="hover:text-primary-600 transition-colors">
+        <div className="flex items-center space-x-2 text-sm text-slate-600 mb-6 max-w-2xl mx-auto">
+          <button onClick={() => navigate('/dashboard')} className="hover:text-emerald-700 transition-colors">
             🏠 Dashboard
           </button>
           <span>/</span>
-          <button onClick={() => navigate(`/pets/${id}`)} className="hover:text-primary-600 transition-colors">
+          <button onClick={() => navigate(`/pets/${id}`)} className="hover:text-emerald-700 transition-colors">
             🐾 {petName}
           </button>
           <span>/</span>
-          <span className="text-primary-600 font-medium">Editar</span>
+          <span className="text-emerald-700 font-medium">Editar</span>
         </div>
         
         {/* Form */}
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-card p-8 space-y-6">
+          <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-8 space-y-6">
             {/* Nombre */}
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="name">
+              <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="name">
                 🏷️ Nombre de la Mascota *
               </label>
               <div className="relative">
@@ -201,10 +201,10 @@ function EditPet() {
                   onChange={handleChange}
                   onFocus={() => setFocusedField('name')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'name' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${formData.name && !isValidName(formData.name) ? 'border-red-300' : ''}`}
                   placeholder="Ej: Luna, Max, Bella..."
                   required
@@ -223,7 +223,7 @@ function EditPet() {
             
             {/* Especie */}
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="especie">
+              <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="especie">
                 🌿 Especie
               </label>
               <select
@@ -233,10 +233,10 @@ function EditPet() {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('especie')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 ${
                   focusedField === 'especie' 
-                    ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                    : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <option value="">Selecciona una especie</option>
@@ -250,7 +250,7 @@ function EditPet() {
             
             {/* Raza */}
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="raza">
+              <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="raza">
                 🐕 Raza
               </label>
               <input
@@ -261,10 +261,10 @@ function EditPet() {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('raza')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                   focusedField === 'raza' 
-                    ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                    : 'border-slate-200 hover:border-slate-300'
                 }`}
                 placeholder="Ej: Labrador, Persa, Canario..."
               />
@@ -272,7 +272,7 @@ function EditPet() {
             
             {/* Género */}
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="genero">
+              <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="genero">
                 ⚕️ Género
               </label>
               <select
@@ -282,10 +282,10 @@ function EditPet() {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('genero')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 ${
                   focusedField === 'genero' 
-                    ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                    : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <option value="">Selecciona el género</option>
@@ -301,7 +301,7 @@ function EditPet() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Peso */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="peso">
+                <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="peso">
                   ⚖️ Peso (kg)
                 </label>
                 <div className="relative">
@@ -316,10 +316,10 @@ function EditPet() {
                     onChange={handleChange}
                     onFocus={() => setFocusedField('peso')}
                     onBlur={() => setFocusedField(null)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                    className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                       focusedField === 'peso' 
-                        ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                        : 'border-slate-200 hover:border-slate-300'
                     } ${formData.peso && !isValidWeight(formData.peso) ? 'border-red-300' : ''}`}
                     placeholder="Ej: 5.5"
                   />
@@ -337,7 +337,7 @@ function EditPet() {
               
               {/* Fecha de Nacimiento */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="fechaNacimiento">
+                <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="fechaNacimiento">
                   🎂 Fecha de Nacimiento
                 </label>
                 <input
@@ -349,10 +349,10 @@ function EditPet() {
                   onChange={handleChange}
                   onFocus={() => setFocusedField('fechaNacimiento')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 ${
                     focusedField === 'fechaNacimiento' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   }`}
                 />
               </div>
@@ -360,7 +360,7 @@ function EditPet() {
             
             {/* Observaciones */}
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="observaciones">
+              <label className="block text-sm font-semibold text-slate-700 mb-2" htmlFor="observaciones">
                 📝 Observaciones
               </label>
               <textarea
@@ -370,10 +370,10 @@ function EditPet() {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('observaciones')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 resize-none ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 resize-none ${
                   focusedField === 'observaciones' 
-                    ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                    : 'border-slate-200 hover:border-slate-300'
                 }`}
                 rows="4"
                 placeholder="Cualquier información adicional sobre tu mascota: hábitos, alergias, comportamiento, etc."
@@ -385,7 +385,7 @@ function EditPet() {
               <button
                 type="button"
                 onClick={() => navigate(`/pets/${id}`)}
-                className="flex-1 py-3 px-6 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
+                className="flex-1 py-3 px-6 border border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl font-semibold transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
               >
                 <span>❌</span>
                 <span>Cancelar</span>
@@ -396,8 +396,8 @@ function EditPet() {
                 disabled={saving || !isFormValid}
                 className={`flex-1 py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform flex items-center justify-center space-x-2 ${
                   saving || !isFormValid
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                    : 'btn-success text-white hover:-translate-y-1 hover:shadow-xl'
+                    ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
+                    : 'bg-emerald-600 hover:bg-emerald-700 text-white hover:-translate-y-1 hover:shadow-md'
                 }`}
               >
                 {saving ? (
@@ -418,21 +418,21 @@ function EditPet() {
         
         {/* Quick Actions */}
         <div className="mt-8 max-w-2xl mx-auto">
-          <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+          <div className="bg-gradient-to-r from-emerald-50 to-slate-50 rounded-xl p-6 border border-slate-200">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4 text-center">
               ⚡ Acciones Rápidas
             </h3>
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => navigate(`/pets/${id}`)}
-                className="flex-1 py-3 px-4 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl font-medium transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
+                className="flex-1 py-3 px-4 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl font-medium transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
               >
                 <span>👁️</span>
                 <span>Ver Perfil Completo</span>
               </button>
               <button
                 onClick={() => navigate('/dashboard')}
-                className="flex-1 py-3 px-4 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl font-medium transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
+                className="flex-1 py-3 px-4 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl font-medium transition-all duration-300 hover:shadow-md flex items-center justify-center space-x-2"
               >
                 <span>🏠</span>
                 <span>Volver al Dashboard</span>

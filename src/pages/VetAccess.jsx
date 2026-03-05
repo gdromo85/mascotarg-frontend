@@ -111,10 +111,10 @@ const VetAccess = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Cargando información de la mascota...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+          <p className="text-slate-600">Cargando información de la mascota...</p>
         </div>
       </div>
     );
@@ -122,11 +122,11 @@ const VetAccess = () => {
 
   if (!petData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50 flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Token no válido</h1>
-          <p className="text-gray-600">No se pudo acceder a la información de la mascota</p>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">Token no válido</h1>
+          <p className="text-slate-600">No se pudo acceder a la información de la mascota</p>
         </div>
       </div>
     );
@@ -135,52 +135,52 @@ const VetAccess = () => {
   const { pet, owners, records, clinicalRecords } = petData;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Acceso Veterinario</h1>
-          <p className="text-gray-600">Información de la mascota y registros médicos</p>
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">Acceso Veterinario</h1>
+          <p className="text-slate-600">Información de la mascota y registros médicos</p>
         </div>
 
         {/* Pet Information */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
+          <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center">
             🐾 Información de la Mascota
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <strong className="text-gray-700">Nombre:</strong>
-              <p className="text-gray-600">{pet.name}</p>
+              <strong className="text-slate-700">Nombre:</strong>
+              <p className="text-slate-600">{pet.name}</p>
             </div>
             <div>
-              <strong className="text-gray-700">Especie:</strong>
-              <p className="text-gray-600">{pet.especie}</p>
+              <strong className="text-slate-700">Especie:</strong>
+              <p className="text-slate-600">{pet.especie}</p>
             </div>
             <div>
-              <strong className="text-gray-700">Raza:</strong>
-              <p className="text-gray-600">{pet.raza}</p>
+              <strong className="text-slate-700">Raza:</strong>
+              <p className="text-slate-600">{pet.raza}</p>
             </div>
             <div>
-              <strong className="text-gray-700">Peso:</strong>
-              <p className="text-gray-600">{pet.peso} kg</p>
+              <strong className="text-slate-700">Peso:</strong>
+              <p className="text-slate-600">{pet.peso} kg</p>
             </div>
             <div>
-              <strong className="text-gray-700">Fecha de Nacimiento:</strong>
-              <p className="text-gray-600">{formatDateForDisplay(pet.fechaNacimiento)}</p>
+              <strong className="text-slate-700">Fecha de Nacimiento:</strong>
+              <p className="text-slate-600">{formatDateForDisplay(pet.fechaNacimiento)}</p>
             </div>
             {pet.observaciones && (
               <div className="md:col-span-2">
-                <strong className="text-gray-700">Observaciones:</strong>
-                <p className="text-gray-600 whitespace-pre-wrap">{pet.observaciones}</p>
+                <strong className="text-slate-700">Observaciones:</strong>
+                <p className="text-slate-600 whitespace-pre-wrap">{pet.observaciones}</p>
               </div>
             )}
           </div>
         </div>
 
         {/* Owners Information */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
+          <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center">
             👥 Propietarios
           </h2>
           {owners.map((owner, index) => {
@@ -189,17 +189,17 @@ const VetAccess = () => {
               <div key={index} className={`${index > 0 ? 'border-t pt-4 mt-4' : ''}`}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <strong className="text-gray-700">Nombre:</strong>
-                    <p className="text-gray-600">{owner.name}</p>
+                    <strong className="text-slate-700">Nombre:</strong>
+                    <p className="text-slate-600">{owner.name}</p>
                   </div>
                   <div>
-                    <strong className="text-gray-700">Celular:</strong>
-                    <p className="text-gray-600">{owner.celular}</p>
+                    <strong className="text-slate-700">Celular:</strong>
+                    <p className="text-slate-600">{owner.celular}</p>
                   </div>
                   {location && (
                     <div className="md:col-span-2">
-                      <strong className="text-gray-700">Ubicación:</strong>
-                      <p className="text-gray-600">{location.address}</p>
+                      <strong className="text-slate-700">Ubicación:</strong>
+                      <p className="text-slate-600">{location.address}</p>
                     </div>
                   )}
                 </div>
@@ -209,70 +209,70 @@ const VetAccess = () => {
         </div>
 
         {/* Medical Records */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
+          <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center">
             📋 Registros Médicos
           </h2>
           {records.length > 0 ? (
             <div className="space-y-4">
               {records.map((record) => (
-                <div key={record.id} className="border-l-4 border-blue-500 pl-4 py-2">
+                <div key={record.id} className="border-l-4 border-emerald-600 pl-4 py-2">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-gray-800">{record.type}</h3>
-                    <span className="text-sm text-gray-500">{formatDateForDisplay(record.date)}</span>
+                    <h3 className="font-semibold text-slate-900">{record.type}</h3>
+                    <span className="text-sm text-slate-500">{formatDateForDisplay(record.date)}</span>
                   </div>
-                  <p className="text-gray-600 whitespace-pre-wrap mb-2">{record.description}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-slate-600 whitespace-pre-wrap mb-2">{record.description}</p>
+                  <p className="text-sm text-slate-500">
                     <strong>Veterinario:</strong> {record.vetName}
                   </p>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-slate-400">
                     Creado: {formatDateForDisplay(record.createdAt)}
                   </p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 italic">No hay registros médicos disponibles</p>
+            <p className="text-slate-500 italic">No hay registros médicos disponibles</p>
           )}
         </div>
 
         {/* Clinical Records */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
+          <h2 className="text-2xl font-semibold text-slate-900 mb-4 flex items-center">
             🏥 Registros Clínicos
           </h2>
           {clinicalRecords.length > 0 ? (
             <div className="space-y-4">
               {clinicalRecords.map((record, index) => (
-                <div key={index} className="border-l-4 border-green-500 pl-4 py-2">
+                <div key={index} className="border-l-4 border-teal-600 pl-4 py-2">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-gray-800">{record.type}</h3>
-                    <span className="text-sm text-gray-500">{formatDateForDisplay(record.fecha)}</span>
+                    <h3 className="font-semibold text-slate-900">{record.type}</h3>
+                    <span className="text-sm text-slate-500">{formatDateForDisplay(record.fecha)}</span>
                   </div>
-                  <p className="text-gray-600 whitespace-pre-wrap mb-2">{record.description}</p>
+                  <p className="text-slate-600 whitespace-pre-wrap mb-2">{record.description}</p>
                   {record.diagnostico && (
-                    <p className="text-gray-600 mb-1">
+                    <p className="text-slate-600 mb-1">
                       <strong>Diagnóstico:</strong> {record.diagnostico}
                     </p>
                   )}
                   {record.tratamiento && (
-                    <p className="text-gray-600 mb-1">
+                    <p className="text-slate-600 mb-1">
                       <strong>Tratamiento:</strong> {record.tratamiento}
                     </p>
                   )}
                   {record.observaciones && (
-                    <p className="text-gray-600 mb-2">
+                    <p className="text-slate-600 mb-2">
                       <strong>Observaciones:</strong> {record.observaciones}
                     </p>
                   )}
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-slate-500">
                     <strong>Veterinario:</strong> {record.vetName}
                   </p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 italic">No hay registros clínicos disponibles</p>
+            <p className="text-slate-500 italic">No hay registros clínicos disponibles</p>
           )}
         </div>
 
@@ -280,7 +280,7 @@ const VetAccess = () => {
         <div className="text-center mb-6">
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition duration-200"
           >
             {showForm ? 'Cancelar' : 'Agregar Registro Clínico'}
           </button>
@@ -288,12 +288,12 @@ const VetAccess = () => {
 
         {/* Add Clinical Record Form */}
         {showForm && (
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Nuevo Registro Clínico</h2>
+          <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-6">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">Nuevo Registro Clínico</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
                     Tipo de Consulta *
                   </label>
                   <select
@@ -301,7 +301,7 @@ const VetAccess = () => {
                     value={formData.type}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option value="">Seleccionar tipo</option>
                     <option value="Consulta">Consulta</option>
@@ -314,7 +314,7 @@ const VetAccess = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
                     Fecha *
                   </label>
                   <input
@@ -323,13 +323,13 @@ const VetAccess = () => {
                     value={formData.fecha}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 mb-1">
                   Nombre del Veterinario *
                 </label>
                 <input
@@ -339,12 +339,12 @@ const VetAccess = () => {
                   onChange={handleInputChange}
                   required
                   placeholder="Ej: Dr. Juan Pérez"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 mb-1">
                   Descripción *
                 </label>
                 <textarea
@@ -354,12 +354,12 @@ const VetAccess = () => {
                   required
                   rows="3"
                   placeholder="Descripción del motivo de consulta..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 ></textarea>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 mb-1">
                   Diagnóstico
                 </label>
                 <textarea
@@ -368,12 +368,12 @@ const VetAccess = () => {
                   onChange={handleInputChange}
                   rows="2"
                   placeholder="Diagnóstico del veterinario..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 ></textarea>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 mb-1">
                   Tratamiento
                 </label>
                 <textarea
@@ -382,12 +382,12 @@ const VetAccess = () => {
                   onChange={handleInputChange}
                   rows="2"
                   placeholder="Tratamiento prescrito..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 ></textarea>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 mb-1">
                   Observaciones
                 </label>
                 <textarea
@@ -396,7 +396,7 @@ const VetAccess = () => {
                   onChange={handleInputChange}
                   rows="2"
                   placeholder="Observaciones adicionales..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 ></textarea>
               </div>
 
@@ -404,14 +404,14 @@ const VetAccess = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
                 >
                   {submitting ? 'Guardando...' : 'Guardar Registro'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+                  className="flex-1 bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
                 >
                   Cancelar
                 </button>

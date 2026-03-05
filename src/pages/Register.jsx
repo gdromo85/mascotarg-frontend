@@ -16,6 +16,7 @@ function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [focusedField, setFocusedField] = useState(null);
   const [phone, setPhone] = useState("");
+  const [documento, setDocumento] = useState("");
   const [gender, setGender] = useState("");
   const [location, setLocation] = useState({ lat: null, lng: null, address: "" });
   const [showMap, setShowMap] = useState(false);
@@ -42,14 +43,15 @@ function Register() {
     const loadingToast = toasts.loading('Creando tu cuenta...');
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
-        name,
-        email,
-        password,
-        celular: phone,
-        sexo: gender,
-        ubicacion: JSON.stringify(location)
-      });
+const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+    name,
+    email,
+    password,
+    celular: phone,
+    documento,
+    sexo: gender,
+    ubicacion: JSON.stringify(location)
+  });
 
       const { token, user } = response.data;
 
@@ -99,9 +101,9 @@ function Register() {
 
   const passwordsMatch = password === confirmPassword && confirmPassword.length > 0;
 
-  const isFormValid = isValidName(name) && isValidEmail(email) && 
-                     isValidPassword(password) && passwordsMatch &&
-                     isValidPhone(phone) && gender && location.address;
+const isFormValid = isValidName(name) && isValidEmail(email) &&
+    isValidPassword(password) && passwordsMatch &&
+    isValidPhone(phone) && documento && gender && location.address;
 
   // Función para obtener ubicación actual
   const getCurrentLocation = () => {
@@ -151,28 +153,28 @@ function Register() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-160px)] flex items-center justify-center px-4 py-8">
+    <div className="min-h-[calc(100vh-160px)] bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50 flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-lg">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <div className="w-20 h-20 bg-gradient-to-r from-emerald-700 to-teal-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm ring-1 ring-emerald-800/20">
             <span className="text-3xl text-white">🐾</span>
           </div>
-          <h1 className="text-3xl font-bold font-display text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold font-display text-slate-900 mb-2">
             ¡Únete a PetClinic QR!
           </h1>
-          <p className="text-gray-600">
+          <p className="text-slate-600">
             Crea tu cuenta y comienza a cuidar a tus mascotas
           </p>
         </div>
         
         {/* Register Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-2xl shadow-card p-8 space-y-6">
+          <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-8 space-y-6">
             {/* Name Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="name"
               >
                 👤 Nombre Completo
@@ -185,10 +187,10 @@ function Register() {
                   onChange={(e) => setName(e.target.value)}
                   onFocus={() => setFocusedField('name')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'name' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${name && !isValidName(name) ? 'border-red-300' : ''}`}
                   placeholder="Ej: Juan Pérez"
                   required
@@ -211,7 +213,7 @@ function Register() {
             {/* Email Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="email"
               >
                 📧 Correo Electrónico
@@ -224,10 +226,10 @@ function Register() {
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={() => setFocusedField('email')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'email' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${email && !isValidEmail(email) ? 'border-red-300' : ''}`}
                   placeholder="tu@email.com"
                   required
@@ -247,10 +249,37 @@ function Register() {
               )}
             </div>
             
-            {/* Phone Field */}
+            {/* Documento Field */}
+  <div className="space-y-2">
+    <label
+      className="block text-sm font-semibold text-slate-700 mb-2"
+      htmlFor="documento"
+    >
+      🪪 Documento de Identidad
+    </label>
+    <div className="relative">
+      <input
+        id="documento"
+        type="text"
+        value={documento}
+        onChange={(e) => setDocumento(e.target.value)}
+        onFocus={() => setFocusedField('documento')}
+        onBlur={() => setFocusedField(null)}
+        className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
+          focusedField === 'documento'
+          ? 'border-emerald-500 shadow-sm shadow-emerald-500/20'
+          : 'border-slate-200 hover:border-slate-300'
+        }`}
+        placeholder="Ej: 20123456"
+        required
+      />
+    </div>
+  </div>
+
+  {/* Phone Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="phone"
               >
                 📱 Teléfono
@@ -263,10 +292,10 @@ function Register() {
                   onChange={(e) => setPhone(e.target.value)}
                   onFocus={() => setFocusedField('phone')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'phone' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${phone && !isValidPhone(phone) ? 'border-red-300' : ''}`}
                   placeholder="Ej: +57 300 123 4567"
                   required
@@ -289,7 +318,7 @@ function Register() {
             {/* Gender Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="gender"
               >
                 👤 Sexo
@@ -301,10 +330,10 @@ function Register() {
                   onChange={(e) => setGender(e.target.value)}
                   onFocus={() => setFocusedField('gender')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 ${
                     focusedField === 'gender' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   }`}
                   required
                 >
@@ -325,7 +354,7 @@ function Register() {
             {/* Location Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="location"
               >
                 📍 Ubicación
@@ -339,10 +368,10 @@ function Register() {
                     onChange={(e) => setLocation({...location, address: e.target.value})}
                     onFocus={() => setFocusedField('location')}
                     onBlur={() => setFocusedField(null)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                    className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                       focusedField === 'location' 
-                        ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                        : 'border-slate-200 hover:border-slate-300'
                     }`}
                     placeholder="Ej: Córdoba, Argentina"
                     required
@@ -359,22 +388,22 @@ function Register() {
                   <button
                     type="button"
                     onClick={getCurrentLocation}
-                    className="flex-1 py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200 text-sm font-medium"
+                    className="flex-1 py-2 px-4 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200 text-sm font-medium"
                   >
                     🎯 Usar mi ubicación
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowMap(true)}
-                    className="flex-1 py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200 text-sm font-medium"
+                    className="flex-1 py-2 px-4 bg-teal-700 text-white rounded-lg hover:bg-teal-800 transition-colors duration-200 text-sm font-medium"
                   >
                     🗺️ Seleccionar en mapa
                   </button>
                 </div>
                 
                 {location.lat && location.lng && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                    <p className="text-green-700 text-sm">
+                  <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+                    <p className="text-emerald-800 text-sm">
                       📍 Coordenadas: {location.lat.toFixed(4)}, {location.lng.toFixed(4)}
                     </p>
                   </div>
@@ -385,7 +414,7 @@ function Register() {
             {/* Password Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="password"
               >
                 🔒 Contraseña
@@ -398,10 +427,10 @@ function Register() {
                   onChange={(e) => setPassword(e.target.value)}
                   onFocus={() => setFocusedField('password')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'password' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${password && !isValidPassword(password) ? 'border-red-300' : ''}`}
                   placeholder="Mínimo 6 caracteres"
                   required
@@ -409,7 +438,7 @@ function Register() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700 transition-colors duration-200"
                 >
                   {showPassword ? '🙈' : '👁️'}
                 </button>
@@ -425,7 +454,7 @@ function Register() {
             {/* Confirm Password Field */}
             <div className="space-y-2">
               <label 
-                className="block text-sm font-semibold text-gray-700 mb-2" 
+                className="block text-sm font-semibold text-slate-700 mb-2" 
                 htmlFor="confirmPassword"
               >
                 🔐 Confirmar Contraseña
@@ -438,10 +467,10 @@ function Register() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   onFocus={() => setFocusedField('confirmPassword')}
                   onBlur={() => setFocusedField(null)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 placeholder-gray-400 ${
+                  className={`w-full px-4 py-3 border rounded-xl bg-slate-50 focus:bg-white transition-all duration-300 placeholder-slate-400 ${
                     focusedField === 'confirmPassword' 
-                      ? 'border-primary-500 shadow-lg shadow-primary-500/20' 
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-emerald-500 shadow-sm shadow-emerald-500/20' 
+                      : 'border-slate-200 hover:border-slate-300'
                   } ${confirmPassword && !passwordsMatch ? 'border-red-300' : ''}`}
                   placeholder="Repite tu contraseña"
                   required
@@ -449,7 +478,7 @@ function Register() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700 transition-colors duration-200"
                 >
                   {showConfirmPassword ? '🙈' : '👁️'}
                 </button>
@@ -471,8 +500,8 @@ function Register() {
               disabled={loading || !isFormValid}
               className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform ${
                 loading || !isFormValid
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'btn-secondary text-white hover:-translate-y-1 hover:shadow-xl'
+                  ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
+                  : 'bg-emerald-600 hover:bg-emerald-700 text-white hover:-translate-y-1 hover:shadow-md'
               }`}
             >
               {loading ? (
@@ -492,11 +521,11 @@ function Register() {
         
         {/* Footer Links */}
         <div className="mt-8 text-center space-y-4">
-          <div className="border-t border-gray-200 pt-6">
-            <p className="text-gray-600 mb-4">¿Ya tienes una cuenta?</p>
+          <div className="border-t border-slate-200 pt-6">
+            <p className="text-slate-600 mb-4">¿Ya tienes una cuenta?</p>
             <Link 
               to="/login" 
-              className="inline-flex items-center justify-center space-x-2 w-full py-3 px-6 border-2 border-primary-500 text-primary-600 hover:bg-primary-50 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
+              className="inline-flex items-center justify-center space-x-2 w-full py-3 px-6 border border-emerald-300 text-emerald-700 hover:bg-emerald-50 rounded-xl font-semibold transition-all duration-300 hover:shadow-md"
             >
               <span>🔑</span>
               <span>Iniciar sesión</span>
@@ -505,28 +534,28 @@ function Register() {
         </div>
         
         {/* Benefits Section */}
-        <div className="mt-8 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+        <div className="mt-8 bg-gradient-to-r from-emerald-50 to-slate-50 rounded-xl p-6 border border-slate-200">
+          <h3 className="text-lg font-semibold text-slate-900 mb-4 text-center">
             🌟 ¿Por qué elegir PetClinic QR?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div className="space-y-2">
               <span className="text-2xl">🏥</span>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-600">
                 <strong>Historial completo</strong><br/>
                 Toda la información médica en un solo lugar
               </p>
             </div>
             <div className="space-y-2">
               <span className="text-2xl">📱</span>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-600">
                 <strong>Acceso inmediato</strong><br/>
                 Códigos QR para consultas rápidas
               </p>
             </div>
             <div className="space-y-2">
               <span className="text-2xl">🔒</span>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-600">
                 <strong>100% seguro</strong><br/>
                 Datos protegidos y encriptados
               </p>
@@ -536,15 +565,15 @@ function Register() {
         
         {/* Map Modal */}
         {showMap && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-slate-200">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold text-slate-900">
                   🗺️ Selecciona tu ubicación
                 </h3>
                 <button
                   onClick={() => setShowMap(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
+                  className="text-slate-500 hover:text-slate-700 text-2xl leading-none"
                 >
                   ×
                 </button>
@@ -552,8 +581,8 @@ function Register() {
               
               <div className="space-y-4">
                 {/* Mapa placeholder - En una implementación real usarías Google Maps, Leaflet, etc. */}
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
-                  <div className="text-center text-gray-600">
+                <div className="w-full h-64 bg-slate-200 rounded-lg flex items-center justify-center relative overflow-hidden">
+                  <div className="text-center text-slate-600">
                     <div className="text-4xl mb-2">🗺️</div>
                     <p className="font-medium">Mapa Interactivo</p>
                     <p className="text-sm">Haz clic para seleccionar ubicación</p>
@@ -567,7 +596,7 @@ function Register() {
                         lng: -74.0721,
                         address: 'Bogotá, Colombia'
                       })}
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 w-4 h-4 rounded-full hover:bg-red-600 transition-colors"
+                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-rose-500 w-4 h-4 rounded-full hover:bg-rose-600 transition-colors"
                       title="Bogotá"
                     ></button>
                     
@@ -577,7 +606,7 @@ function Register() {
                         lng: -75.5812,
                         address: 'Medellín, Colombia'
                       })}
-                      className="absolute top-1/3 left-1/3 bg-red-500 w-4 h-4 rounded-full hover:bg-red-600 transition-colors"
+                      className="absolute top-1/3 left-1/3 bg-rose-500 w-4 h-4 rounded-full hover:bg-rose-600 transition-colors"
                       title="Medellín"
                     ></button>
                     
@@ -587,7 +616,7 @@ function Register() {
                         lng: -76.5320,
                         address: 'Cali, Colombia'
                       })}
-                      className="absolute bottom-1/3 left-2/5 bg-red-500 w-4 h-4 rounded-full hover:bg-red-600 transition-colors"
+                      className="absolute bottom-1/3 left-2/5 bg-rose-500 w-4 h-4 rounded-full hover:bg-rose-600 transition-colors"
                       title="Cali"
                     ></button>
                     
@@ -597,7 +626,7 @@ function Register() {
                         lng: -74.8070,
                         address: 'Barranquilla, Colombia'
                       })}
-                      className="absolute top-1/4 left-3/5 bg-red-500 w-4 h-4 rounded-full hover:bg-red-600 transition-colors"
+                      className="absolute top-1/4 left-3/5 bg-rose-500 w-4 h-4 rounded-full hover:bg-rose-600 transition-colors"
                       title="Barranquilla"
                     ></button>
                   </div>
@@ -611,10 +640,10 @@ function Register() {
                       lng: -74.0721,
                       address: 'Bogotá, Colombia'
                     })}
-                    className="p-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-left transition-colors"
+                    className="p-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors"
                   >
-                    <div className="font-medium text-gray-800">Bogotá</div>
-                    <div className="text-sm text-gray-600">Colombia</div>
+                    <div className="font-medium text-slate-900">Bogotá</div>
+                    <div className="text-sm text-slate-600">Colombia</div>
                   </button>
                   
                   <button
@@ -623,10 +652,10 @@ function Register() {
                       lng: -75.5812,
                       address: 'Medellín, Colombia'
                     })}
-                    className="p-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-left transition-colors"
+                    className="p-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors"
                   >
-                    <div className="font-medium text-gray-800">Medellín</div>
-                    <div className="text-sm text-gray-600">Colombia</div>
+                    <div className="font-medium text-slate-900">Medellín</div>
+                    <div className="text-sm text-slate-600">Colombia</div>
                   </button>
                   
                   <button
@@ -635,10 +664,10 @@ function Register() {
                       lng: -76.5320,
                       address: 'Cali, Colombia'
                     })}
-                    className="p-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-left transition-colors"
+                    className="p-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors"
                   >
-                    <div className="font-medium text-gray-800">Cali</div>
-                    <div className="text-sm text-gray-600">Colombia</div>
+                    <div className="font-medium text-slate-900">Cali</div>
+                    <div className="text-sm text-slate-600">Colombia</div>
                   </button>
                   
                   <button
@@ -647,23 +676,23 @@ function Register() {
                       lng: -74.8070,
                       address: 'Barranquilla, Colombia'
                     })}
-                    className="p-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-left transition-colors"
+                    className="p-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-left transition-colors"
                   >
-                    <div className="font-medium text-gray-800">Barranquilla</div>
-                    <div className="text-sm text-gray-600">Colombia</div>
+                    <div className="font-medium text-slate-900">Barranquilla</div>
+                    <div className="text-sm text-slate-600">Colombia</div>
                   </button>
                 </div>
                 
                 {/* Input manual de ubicación */}
-                <div className="border-t pt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                <div className="border-t border-slate-200 pt-4">
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
                     O ingresa manualmente:
                   </label>
                   <div className="flex space-x-2">
                     <input
                       type="text"
                       placeholder="Ciudad, País"
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:border-primary-500 focus:outline-none"
+                      className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:border-emerald-500 focus:outline-none"
                       onKeyPress={(e) => {
                         if (e.key === 'Enter') {
                           const address = e.target.value;
@@ -689,7 +718,7 @@ function Register() {
                           });
                         }
                       }}
-                      className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+                      className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                     >
                       Confirmar
                     </button>

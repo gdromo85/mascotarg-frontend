@@ -11,8 +11,12 @@ export const useApiClient = () => {
   
   // Método GET
   const get = useCallback(async (url, config = {}) => {
+    
+    
     try {
+      
       const response = await apiClient.get(url, config);
+      
       return response;
     } catch (error) {
       console.error(`Error en GET ${url}:`, error);

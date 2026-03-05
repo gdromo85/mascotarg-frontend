@@ -118,35 +118,35 @@ function AddMedicalRecord() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-50 to-amber-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="mb-6">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
+          <nav className="flex items-center space-x-2 text-sm text-slate-600">
             <button 
               onClick={() => navigate('/dashboard')}
-              className="hover:text-primary-600 transition-colors"
+              className="hover:text-emerald-700 transition-colors"
             >
               Dashboard
             </button>
             <span>›</span>
             <button 
               onClick={() => navigate(`/pets/${petId}`)}
-              className="hover:text-primary-600 transition-colors"
+              className="hover:text-emerald-700 transition-colors"
             >
               Detalle de Mascota
             </button>
             <span>›</span>
-            <span className="text-gray-900 font-medium">Nuevo Registro Médico</span>
+            <span className="text-slate-900 font-medium">Nuevo Registro Médico</span>
           </nav>
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-white mb-8 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-emerald-700 to-teal-700 rounded-2xl p-8 text-white mb-8 relative overflow-hidden border border-white/10">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full transform translate-x-8 -translate-y-8"></div>
           <div className="relative z-10">
             <div className="flex items-center space-x-4 mb-4">
-              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+              <div className="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center ring-1 ring-white/20">
                 <span className="text-3xl">📋</span>
               </div>
               <div>
@@ -158,11 +158,11 @@ function AddMedicalRecord() {
         </div>
 
         {/* Formulario */}
-        <div className="bg-white rounded-2xl shadow-card p-8">
+        <div className="bg-white/90 rounded-2xl border border-slate-200 shadow-sm p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Fecha */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
                 📅 Fecha del registro *
               </label>
               <input
@@ -171,10 +171,10 @@ function AddMedicalRecord() {
                 value={formData.date}
                 onChange={handleInputChange}
                 max={getMaxDateForInput()} // Usar utilidad GMT -3
-                className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 transition-all duration-300 ${
                   errors.date 
                     ? 'border-red-500 focus:border-red-500 bg-red-50' 
-                    : 'border-gray-200 focus:border-primary-500 focus:bg-white'
+                    : 'border-slate-200 focus:border-emerald-500 focus:bg-white'
                 }`}
               />
               {errors.date && (
@@ -187,17 +187,17 @@ function AddMedicalRecord() {
 
             {/* Tipo de Atención */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
                 🩺 Tipo de atención *
               </label>
               <select
                 name="type"
                 value={formData.type}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 transition-all duration-300 ${
                   errors.type 
                     ? 'border-red-500 focus:border-red-500 bg-red-50' 
-                    : 'border-gray-200 focus:border-primary-500 focus:bg-white'
+                    : 'border-slate-200 focus:border-emerald-500 focus:bg-white'
                 }`}
               >
                 <option value="">Selecciona el tipo de atención</option>
@@ -217,7 +217,7 @@ function AddMedicalRecord() {
 
             {/* Nombre del Veterinario */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
                 👩‍⚕️ Nombre del veterinario *
               </label>
               <input
@@ -226,10 +226,10 @@ function AddMedicalRecord() {
                 value={formData.vetName}
                 onChange={handleInputChange}
                 placeholder="Ej: Dr. Juan Pérez"
-                className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 transition-all duration-300 ${
                   errors.vetName 
                     ? 'border-red-500 focus:border-red-500 bg-red-50' 
-                    : 'border-gray-200 focus:border-primary-500 focus:bg-white'
+                    : 'border-slate-200 focus:border-emerald-500 focus:bg-white'
                 }`}
               />
               {errors.vetName && (
@@ -242,7 +242,7 @@ function AddMedicalRecord() {
 
             {/* Descripción */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
                 📝 Descripción del registro *
               </label>
               <textarea
@@ -251,10 +251,10 @@ function AddMedicalRecord() {
                 onChange={handleInputChange}
                 rows={5}
                 placeholder="Describe detalladamente el procedimiento, diagnóstico, tratamiento o observaciones..."
-                className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 resize-none ${
+                className={`w-full px-4 py-3 border rounded-xl bg-slate-50 transition-all duration-300 resize-none ${
                   errors.description 
                     ? 'border-red-500 focus:border-red-500 bg-red-50' 
-                    : 'border-gray-200 focus:border-primary-500 focus:bg-white'
+                    : 'border-slate-200 focus:border-emerald-500 focus:bg-white'
                 }`}
               />
               <div className="flex justify-between items-center mt-1">
@@ -264,11 +264,11 @@ function AddMedicalRecord() {
                     <span>{errors.description}</span>
                   </p>
                 ) : (
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-slate-500 text-sm">
                     Mínimo 10 caracteres
                   </p>
                 )}
-                <span className="text-gray-500 text-sm">
+                <span className="text-slate-500 text-sm">
                   {formData.description.length}/500
                 </span>
               </div>
@@ -279,7 +279,7 @@ function AddMedicalRecord() {
               <button
                 type="button"
                 onClick={() => navigate(`/pets/${petId}`)}
-                className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
+                className="flex-1 bg-slate-600 hover:bg-slate-700 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
                 disabled={loading}
               >
                 <span>❌</span>
@@ -289,7 +289,7 @@ function AddMedicalRecord() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 btn-primary text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
@@ -308,12 +308,12 @@ function AddMedicalRecord() {
         </div>
 
         {/* Info adicional */}
-        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+        <div className="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-6">
           <div className="flex items-start space-x-3">
-            <span className="text-blue-600 text-xl">💡</span>
+            <span className="text-emerald-700 text-xl">💡</span>
             <div>
-              <h3 className="font-semibold text-blue-800 mb-2">Consejos para un buen registro</h3>
-              <ul className="text-blue-700 text-sm space-y-1">
+              <h3 className="font-semibold text-emerald-900 mb-2">Consejos para un buen registro</h3>
+              <ul className="text-emerald-800 text-sm space-y-1">
                 <li>• Incluye todos los detalles relevantes del procedimiento</li>
                 <li>• Menciona medicamentos administrados y dosis</li>
                 <li>• Especifica recomendaciones de seguimiento</li>
